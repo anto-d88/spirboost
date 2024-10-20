@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+   /* padding: 20px;*/
+}
+
+h1 {
+    color: #333;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#cart {
+    margin-top: 20px;
+}
+
+#cart div {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+}

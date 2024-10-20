@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+main{
+    width: 100%;
+    background-color: #fff;
+    
+}
+.boxPanier { 
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+.boxinfopanier{
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: normal;
+    height: 100%;
+    font-size: 1.8vw;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+}
+.article1{
+    display: flex;
+}
+.boxArticleEtInfoClient{
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+}
+.boxArticles{
+    width: 50%;
+}
+.boxInfoClient{
+    border-left: #fff 2px solid;
+    width: 50%;
+}
+.boxInfoClient ul{
+    list-style: none;
+    margin-top: 30px;
+}
+
+
+.boxemilieu img{
+    margin-top: 20px;
+    width: 100%;
+}
+.titre{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 3.5vw;
+    color: #6d9e67;
+}

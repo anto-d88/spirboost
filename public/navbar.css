@@ -1,0 +1,185 @@
+header{
+  display: flex;
+    background-color: #fff;
+    color: #0d4009;
+    width: 100%;
+    padding: 1% 0;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2%;
+    
+}
+.logoutilisateur{
+  margin-right: 10px;
+  width: 4%;
+  
+}
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
+}
+
+/* Style pour diviser les lettres en deux couleurs */
+.logo span {
+  display: inline-block;
+}
+
+/* Première moitié en orange */
+.logo span:nth-child(-n+4) {
+  color: #f39c12; /* Orange */
+}
+
+/* Deuxième moitié en vert spiruline */
+.logo span:nth-child(n+5) {
+  color: #6d9e67; /* Vert spiruline */
+}
+.nomutilisateur {
+  color: #6d9e67;
+  }
+/* Cacher le bouton checkbox */
+#menu-toggle {
+    display: none;
+  }
+  
+  /* Le conteneur du menu burger */
+  .burger-menu {
+    position: relative;
+  }
+  
+  /* Le style des 3 lignes du burger */
+  .burger-icon {
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 24px;
+    
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+  }
+  
+  .burger-icon span {
+    display: block;
+    background-color: #6d9e67;
+    height: 3px;
+    width: 100%;
+    margin: 5px 0;
+    transition: 0.3s ease;
+  }
+  
+  /* Menu caché par défaut */
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -50%; /* Cache le menu hors écran */
+    width: 50%;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    z-index: 1;
+  }
+  
+  .nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-menu li {
+    margin: 20px 0;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+        color: #6d9e67;
+        border: 1px solid #f39c12;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: color 0.3s ease;
+        font-size: 70%;
+  }
+  .nav-buttons .btn:hover{
+    color: #e67e22;
+}
+  
+  /* Quand le checkbox est coché, afficher le menu */
+  #menu-toggle:checked ~ .nav-menu {
+    left: 0; /* Affiche le menu */
+  }
+  
+  /* Animation du burger lors du clic */
+  #menu-toggle:checked + .burger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  #menu-toggle:checked + .burger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #menu-toggle:checked + .burger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Responsiveness : sur grands écrans, cacher le menu burger */
+  @media (min-width: 1015px) {
+    
+    .burger-icon {
+      display: none;
+    }
+  
+    .nav-menu {
+      position: static;
+      display: flex;
+      background-color: transparent;
+      justify-content: space-between;
+      height: auto;
+      right: 0;
+      width: auto;
+    }
+  
+    .nav-menu ul {
+        list-style: none;
+        display: flex;
+    }
+  
+    .nav-menu li {
+        margin-left: 20px;
+    }
+  
+    
+  }
+  @media(max-width: 600px){
+    .header{
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: normal;
+    }
+   
+    .burger-icon{
+      margin-right: 10px;
+    }
+    .nav-menu{
+      top: 40px;
+    }
+    .logo {
+      font-size: 1rem;
+    }
+    .nomutilisateur{
+      font-size: 50%;
+    }
+   
+
+}

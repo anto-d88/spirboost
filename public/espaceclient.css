@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+main{
+    width: 100%;
+    background-color: #fff;
+    
+}
+.boxEspaceClient{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    
+    background-color: #fff;
+    height: 80%;
+    width: 80%;
+    position: absolute; 
+    display: flex;
+}
+.nav{
+    height: 100%;
+    width: 20%;
+    border-right: 2px #6d9e67 solid;
+}
+.nav ul{
+    list-style: none;
+}
+.nav ul button{
+    width: 100%;
+    
+}
+.navnom{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 2vw;
+    color: #6d9e67;
+    border-bottom: 2px #6d9e67 solid;
+}
+.boxInfoClient{
+    display: none;
+   font-family: "Roboto Condensed", sans-serif;
+    font-style: normal;
+    height: 100%;
+    font-size: 1.8vw;
+    font-weight: 600;
+    line-height: 1.6;
+    
+}
+.boxCommandes{
+    display: none;
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: normal;
+    height: 100%;
+    font-size: 1.8vw;
+    font-weight: 600;
+    line-height: 1.6;
+    
+}
+.boxemilieu img{
+    margin-top: 20px;
+    width: 100%;
+}

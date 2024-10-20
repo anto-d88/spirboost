@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Montserrat:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./panier.css">
+    <link rel="stylesheet" href="./footer.css">
+</head>
+<body>
+    <%- include('header') %>
+    <main>
+        <section class="boxPanier">
+      <img src="./img/imgillustrator.svg" alt="image maquette ! ">
+      <section class="boxinfopanier">
+          <h1 class="titre">Votre panier</h1>
+          <section class="boxArticleEtInfoClient">
+          <section class="boxArticles">
+    <% if (cart.length > 0) { %>
+        <ul class="article1">
+            <% cart.forEach(item => { %>
+                
+                <li><%= item.quantity %> - Spiruline, 200 comprimés - <%= item.total_price %>€</li>
+                <li><form action="/delete?userId=<%= item.user_id %>" id="panier" method="post">
+                    <button type="submit">Suprimer</button>
+                </form></li>
+            
+        </ul>
+        
+        <form action="/success?userId=<%= item.user_id %>" id="panier" method="post">
+            <button type="submit">Valider la commande</button>
+        </form><% }) %>
+    <% } else { %>
+        <p>Votre panier est vide.</p>
+    <% } %>
+</section>
+    <section class="boxInfoClient">
+        <p class="textmassage">Vérrifiez bien vos informations de livraisons si-dessous avant de validé la commande</p>
+
+        <ul>
+            <li><%= user.first_name %></li>
+            <li><%= user.last_name %></li>
+            <li><%= user.address %></li>
+            <li><%= user.phone_number %></li>
+            <li><%= user.email %></li>
+        </ul>
+
+    </section>
+</section>
+</section>
+</section>
+<section class="boxemilieu">
+    <img src="./img/montage01.png" alt="image maquette ! ">
+</section>
+
+</main>
+  <footer>
+    <%- include('footer') %>
+  </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+      const hidenid = document.getElementById('hidenid').innerHTML;
+      const userId = hidenid ;
+      document.getElementById("hidenid").style.display = "none"
+      const userLinkaccueil = document.getElementById('accueil');
+      userLinkaccueil.href = `/accueil?userId=${encodeURIComponent(userId)}`;
+      const userLinkpanier = document.getElementById('panier');
+      userLinkpanier.href = `/panier?userId=${encodeURIComponent(userId)}`;
+      const userLinkEspaceClient = document.getElementById('espaceClient');
+    userLinkEspaceClient.href = `/espaceClient?userId=${encodeURIComponent(userId)}`;
+    });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Montserrat:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+   
+
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./espaceclient.css">
+    <link rel="stylesheet" href="./footer.css">
+    <title>Bienvenue - Les Bienfaits de la Spiruline</title>
+  
+</head>
+<body>
+    <%- include('header') %>
+      <main>
+      <section class="boxEspaceClient">
+        <img src="./img/imgillustrator.svg" alt="image maquette ! ">
+        <section class="box">
+          <nav class="nav">
+            <ul>
+              <li class="navnom"><%= user.last_name %> <%= user.first_name %></li>
+              <li><button class="informations">Mes Informations</button></li>
+              <li><button class="commandes">Mes Commandes</button</li>
+            </ul>
+          </nav>
+        <section class="boxInfoClient">
+          <h1>Informations personnel</h1>
+       <p>NOM: <%= user.last_name %></p>
+       <p>PRENOM: <%= user.first_name %></p>
+       <p>TELEPHONE: <%= user.phone_number %></p>
+       <p>E-MAIL: <%= user.email %></p>
+       <p>ADRESSE: <%= user.address %></p>
+      </section>
+      <section class="boxCommandes">
+<p>mes commandes</p>
+      </section>
+    </section>
+</section>
+<section class="boxemilieu">
+  <img src="./img/montage01.png" alt="image maquette ! ">
+</section>
+</main>
+    <footer>
+      <%- include('footer') %>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const hidenid = document.getElementById('hidenid').innerHTML;
+    const userId = hidenid ;
+    document.getElementById("hidenid").style.display = "none"
+    const userLinkaccueil = document.getElementById('accueil');
+    userLinkaccueil.href = `/accueil?userId=${encodeURIComponent(userId)}`;
+    const userLinkpanier = document.getElementById('panier');
+    userLinkpanier.href = `/panier?userId=${encodeURIComponent(userId)}`;
+    const userLinkEspaceClient = document.getElementById('espaceClient');
+  userLinkEspaceClient.href = `/espaceClient?userId=${encodeURIComponent(userId)}`;
+  });
+  </script>
+  <script src="./scripespaceclient.js"></script>
+</body>
+</html>

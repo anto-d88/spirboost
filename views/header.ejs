@@ -1,0 +1,59 @@
+
+<header>
+    <% if (user) { %> 
+            <p id="hidenid"><%= user.id %></p>
+            <% } %>
+    <section class="header">
+       <section class="logo-utilisateur">
+        <section class="logo">
+            <h1 class="logo">
+                <span>S</span>
+                <span>P</span>
+                <span>I</span>
+                <span>R</span>
+                <span>B</span>
+                <span>O</span>
+                <span>O</span>
+                <span>S</span>
+                <span>T</span>
+              </h1>
+        </section>
+        <section class="boxtextheader"><% if (user) { %>
+          <h3 class="nomutilisateur">Bienvenue, <%= user.first_name %> <%= user.last_name %>! </h3>
+      <% } %>
+         </section>
+        </section> 
+        
+         <!-- Bouton burger -->
+<div class="burger-menu">
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="burger-icon">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+
+<!-- Menu à afficher lors du clic -->
+        <nav class="nav-menu">
+   <ul class="nav-buttons">
+    <li><a href="/accueil" id="accueil" class="btn">Accueil</a></li>
+
+    <li><a href="#" class="btn">Contact</a></li>
+    <% if (!user) { %>
+      <li><a href="/register" class="btn">Nous rejoindre</a></li>
+      <li><a href="/login" class="btn">Connection</a> </li>
+      <% } else { %>
+        <li><a href="/panier" id="panier" class="btn">Panier</a></li>
+        <li><a href="/espaceClient" id="espaceClient" class="btn">Espace client</a></li>
+    <li><a href="/logout" class="btn">Déconnexion</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</div>
+</section>
+<% if (!user){ %>
+<img src="./img/logoutilisateur.svg" alt="Image" class="logoutilisateur">
+<% } else { %>
+    <img src="./img/logoutilisateur2.svg" alt="Image" class="logoutilisateur">
+    <% } %>
+  </header>
