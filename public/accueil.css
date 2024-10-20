@@ -69,12 +69,11 @@ main{
     }
     .boxforme{
         width: 100%;
-        margin-top: 5%;
-        margin-left: 40%;
+        margin-top: -5%;
+        margin-left: 25%;
     }
     .boxforme .pilulier{
-        width: 60%;
-        margin-left: 10%;
+        width: 50%;
       margin-left: 0;
     }
   
