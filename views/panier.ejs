@@ -8,34 +8,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Montserrat:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
+   
     <link rel="stylesheet" href="./navbar.css">
     <link rel="stylesheet" href="./panier.css">
-    <link rel="stylesheet" href="./footer.css">
 </head>
 <body>
-    <%- include('header') %>
-    <main>
+    <div class="fade-in">
+        <div class="fullscreen-image">
+            <main>
+        <%- include('header') %>
         <section class="boxPanier">
-      <img src="./img/imgillustrator.svg" alt="image maquette ! ">
       <section class="boxinfopanier">
           <h1 class="titre">Votre panier</h1>
           <section class="boxArticleEtInfoClient">
           <section class="boxArticles">
     <% if (cart.length > 0) { %>
-        <ul class="article1">
+        <section class="article1">
             <% cart.forEach(item => { %>
                 
-                <li><%= item.quantity %> - Spiruline, 200 comprimés - <%= item.total_price %>€</li>
-                <li><form action="/delete?userId=<%= item.user_id %>" id="panier" method="post">
+                <%= item.quantity %> - Spiruline, 180 comprimés - <%= item.total_price %>€
+            </section> 
+               <form action="/delete?userId=<%= item.user_id %>" id="panier" method="post">
                     <button type="submit">Suprimer</button>
-                </form></li>
+                </form>
             
-        </ul>
         
-        <form action="/success?userId=<%= item.user_id %>" id="panier" method="post">
+        
+        <form action="/paiement?userId=<%= item.user_id %>"  method="post">
             <button type="submit">Valider la commande</button>
         </form><% }) %>
+        <a href="/chargementPaiement" id="success" class="btn">Success</a>
+
     <% } else { %>
         <p>Votre panier est vide.</p>
     <% } %>
@@ -55,27 +58,13 @@
 </section>
 </section>
 </section>
-<section class="boxemilieu">
-    <img src="./img/montage01.png" alt="image maquette ! ">
-</section>
+
 
 </main>
+        </div>
+    </div>
   <footer>
-    <%- include('footer') %>
   </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-      const hidenid = document.getElementById('hidenid').innerHTML;
-      const userId = hidenid ;
-      document.getElementById("hidenid").style.display = "none"
-      const userLinkaccueil = document.getElementById('accueil');
-      userLinkaccueil.href = `/accueil?userId=${encodeURIComponent(userId)}`;
-      const userLinkpanier = document.getElementById('panier');
-      userLinkpanier.href = `/panier?userId=${encodeURIComponent(userId)}`;
-      const userLinkEspaceClient = document.getElementById('espaceClient');
-    userLinkEspaceClient.href = `/espaceClient?userId=${encodeURIComponent(userId)}`;
-    });
-    
-    </script>
+  <script src="/scriptsession3.js"></script>
 </body>
 </html>

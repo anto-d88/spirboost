@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Montserrat:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="./navbar.css">
+ 
+    <title>Contact</title>
+  
+</head>
+<body>
+    <div class="fade-in">
+        <div class="fullscreen-image">
+          <main>
+          <%- include('header') %>
+          <div class="content">
+            <!-- Section du titre -->
+            <div class="left-side">
+                <div class="contener-texteAccueil">
+                <img src="./img/logo_Spirboost.png" alt="Image 1" class="logoAccueil">
+                <h1 class="titreAccueil">Bienvenue</h1>
+                </div>
+            </div>
+            
+            <!-- Section du form-->
+             <div class="boxform">
+                <!-- Social Media Links -->
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+        
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Contactez-nous</h3>
+                    <form action="mailto:spirlife@outlook.fr" method="post" enctype="text/plain">
+                        <input type="text" name="name" placeholder="Votre nom" required>
+                        <input type="email" name="email" placeholder="Votre e-mail" required>
+                        <textarea name="message" placeholder="Votre message" rows="4" required></textarea>
+                        <input type="submit" value="Envoyer">
+                    </form>
+                </div>
+            
+          </div>
+          </div>
+        </main>
+        </div>
+      </div>
+
+
+      <script src="/scriptsession4.js"></script>
+</body>
+</html>

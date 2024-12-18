@@ -10,145 +10,43 @@
 
    
     <link rel="stylesheet" href="./accueil.css">
-    <link rel="stylesheet" href="./produit.css">
-    <link rel="stylesheet" href="./history.css">
-    <link rel="stylesheet" href="./navbar.css">
-    <link rel="stylesheet" href="./footer.css">
-    <title>Bienvenue - Les Bienfaits de la Spiruline</title>
+
+    <title>Bienvenue</title>
   
 </head>
 <body>
-    <%- include('header') %>
-      <main>
-      <section class="boxAccueil">
-        <img src="./img/imgillustrator.svg" alt="image maquette ! ">
-        
-        <section class="boxforme">
-          <img src="./img/imgspirulinemodif.png" alt="image maquette ! " class="pilulier">
+    <% if (user) { %> 
+        <p id="hidenid"><%= user.id %></p>
+        <% } %>
 
-      </section>
-     
-    <section class="textepagedaccueil">
+    <div class="fade-in">
+<!-- Conteneur de l'image pleine écran -->
+<div class="fullscreen-image">
+  <div class="content">
+    <!-- Section du titre -->
+    <div class="left-side">
+        <div class="contener-texteAccueil">
+        <img src="./img/logo_Spirboost.png" alt="Image 1" class="logoAccueil">
+        <h1 class="titreAccueil">Bienvenue</h1>
+        </div>
+    </div>
     
-        <h1 class="titre">SPIRBOOST</h1>
-
-    <section class="text-block">
-         
-         <p>Vous voulez booster votre énergie, renforcer votre immunité et rayonner de santé ? 
-            Avec SPIRBOOST, la spiruline qui vous veut du bien,
-            c'est un shot de vitalité au quotidien!
-         </p>
-         <p>Notre super-aliment est là pour vous donner la pêche,
-            un moral d'acier et même... une peau éclatante ( oui, tout ça dans un petit comprimé vert fait d'algue bio!).
-            Adieu les baisses de régime, bonjour la forme olympique !
-         </p>
-    </section>
-</section>
-</section>
-<section class="contenaire">
-  <section class="description">
-    <h1 class="titreProduit">SPIRULINE BIO: 180 Comprimés</h1>
-    <p>Découvrez notre paquet de 180 comprimés de spiruline, un super-aliment riche en nutriments essentiels pour votre santé quotidienne. La spiruline est une algue bleue-verte reconnue pour ses nombreux bienfaits, notamment sa capacité à renforcer le système immunitaire, améliorer l'énergie et soutenir la santé générale.</p>
-    <h2 class="titreProduit2">Bienfaits de la Spiruline</h2>
-    <ul class="benefits-list">
-        <li>Riche en protéines et en acides aminés essentiels</li>
-        <li>Renforce le système immunitaire</li>
-        <li>Améliore l'énergie et la vitalité</li>
-        <li>Soutient la santé cardiovasculaire</li>
-        <li>Détoxifie le corps des métaux lourds et des toxines</li>
-        <li>Aide à la gestion du poids</li>
-        <li>Riche en antioxydants pour combattre le stress oxydatif</li>
-    </ul>
-    <h2 class="titreProduit2">Mode d'emploi</h2>
-    <p>Prendre 4 à 6 comprimés par jour avec un grand verre d'eau, de préférence pendant les repas.</p>
-    <h2 class="titreProduit2">Ingrédients</h2>
-    <p>100% Spiruline biologique pure, sans additifs ni conservateurs.</p>
-    <h2 class="titreProduit2">Prix</h2>
-    <p><strong>Prix: <%= products[0].price %>€</strong></p>
-    <form class="add-to-cart-form" data-product-id="<%= products[0].id %>" data-product-price="<%= products[0].price %>" class="quantity-selector" >
-      <label for="quantity-<%= products[0].id %>">Quantité:</label>
-      <input type="number" id="quantity-<%= products[0].id %>" name="quantity" min="1" value="1" class="quantity">
-      <button type="submit" class="add-to-cart">Ajouter au Panier</button>
-    </form>
-    <button class="quantity-btn decrease">-</button>
-    <button class="quantity-btn increase">+</button>
-  <p class="status-message" id="status-<%= products[0].id %>"></p>
-  <a href="/panier" id="panier2" class="btn">Aller dans le Panier</a>
-  </section>
-  
-    <section class="image-slider">
-        <section class="slides">
-          <section class="boxeimg1">
-          <img src="./img/imgspirulinemodif.png" alt="Image 1" class="img1">
-        </section>
-         <section class="boxeimg2">
-          <img src="./img/R.jpg" alt="Image 2" class="img2">
-        </section>
-          <section class="boxeimg3">
-            <img src="./img/OIP (5).jpg" alt="Image 3" class="img3">
-          </section>
-        </section>
-        <button class="prev" onclick="prevSlide()">&#10094;</button>
-        <button class="next" onclick="nextSlide()">&#10095;</button>
-    </section>
-  
-  <!--<section class="imgproduis">
-    <img src="./img/pilulier.png" alt="image maquette ! " class="pilulier">
-  </section>-->
-</section>
-<section class="textehitoire">
-      
-  <h2 class="titreProduit">L'Histoire de la Spiruline</h2>
-
-  <h3 class="titreProduit2">Origines et Découverte</h3>
-  <section class="text-block2">
-      <p>La spiruline est une cyanobactérie, souvent appelée "algue bleue-verte", qui est apparue sur Terre il y a environ 3,5 milliards d'années. Elle tire son nom de sa forme hélicoïdale (spirale) et de sa couleur distincte. Bien que microscopique, cette bactérie a joué un rôle crucial dans l'évolution de la vie sur Terre en contribuant à la production d'oxygène à travers la photosynthèse.
-          </p>
-  </section> 
-  <h3 class="titreProduit2">Les Premiers Utilisateurs</h3>
-  <section class="text-block2">
-      <p>
-        La spiruline a été consommée par différentes civilisations bien avant qu'elle ne soit redécouverte par les scientifiques modernes. Les Aztèques du Mexique sont parmi les premiers peuples connus pour avoir utilisé la spiruline. Ils la récoltaient dans le lac Texcoco, où elle se développait naturellement. Les Aztèques la consommaient sous forme de gâteaux appelés "tecuitlatl", réputés pour leur haute valeur nutritive. Des explorateurs espagnols ont également observé la consommation de spiruline par les Aztèques lors de leur arrivée en Amérique centrale au XVIe siècle.
-
-        En Afrique, des tribus du Kanem, dans la région du lac Tchad, récoltaient et consommaient la spiruline depuis des siècles. Ils la transformaient en galettes appelées "dihé", qui étaient vendues sur les marchés locaux et constituaient une source importante de nutrition.
-      </p>
-  </section> 
-  <h3 class="titreProduit2">La Redécouverte Scientifique</h3>
-  <section class="text-block2">
-      <p>La spiruline est restée relativement inconnue en dehors de ces régions jusqu'au XXe siècle. Dans les années 1940 et 1950, des botanistes et microbiologistes commencèrent à redécouvrir ses propriétés uniques. C'est surtout à partir des années 1960 que la spiruline attira l'attention de la communauté scientifique. Des chercheurs français, notamment Jean Léonard et Pierre Clément, étudièrent les propriétés nutritionnelles et les potentiels bienfaits de la spiruline pour la santé humaine.
-
-        En 1967, la spiruline fut présentée à la conférence sur les algues au Centre de recherches agronomiques tropicales de l’ORTOM, à Mexico. Cette présentation marqua le début de l'intérêt global pour la spiruline en tant que superaliment.
-      </p>
-  </section>
-  <h3 class="titreProduit2">L'Émergence en Tant que Superaliment</h3>
-  <section class="text-block2">
-    <p>La spiruline est riche en protéines complètes, vitamines (comme la vitamine B12), minéraux (comme le fer), et antioxydants. Ces qualités nutritionnelles ont conduit à sa popularité croissante comme complément alimentaire. Dans les années 1970, la NASA et l'Agence spatiale européenne (ESA) s'intéressèrent à la spiruline pour ses applications potentielles dans les régimes alimentaires des astronautes lors de missions spatiales prolongées, en raison de sa haute densité nutritionnelle et de sa capacité à se cultiver dans des environnements contrôlés.</p>
-
-</section>
-<h3 class="titreProduit2">Production et Consommation Modernes</h3>
-<section class="text-block2">
-    <p>Aujourd'hui, la spiruline est cultivée dans des fermes aquatiques à travers le monde, notamment en Chine, en Inde, aux États-Unis, et dans certaines régions d'Afrique et d'Amérique latine. La production commerciale de spiruline se fait dans des bassins d'eau douce contrôlés, où des conditions optimales sont maintenues pour maximiser la croissance et la pureté de la spiruline.
-
-        Elle est commercialisée sous diverses formes, notamment en poudre, en comprimés, et en capsules, et est largement utilisée dans les smoothies, les barres énergétiques, et même certains plats gastronomiques. La spiruline est particulièrement prisée par les adeptes de l'alimentation saine et les sportifs pour ses bienfaits potentiels sur la performance, l'endurance, et la récupération.</p>
-    
-</section>
-<h3 class="titreProduit2">Potentiel et Perspectives Futures</h3>
-<section class="text-block2">
-    <p>Outre ses usages alimentaires, la spiruline est explorée pour ses applications dans la santé publique, en particulier dans les régions touchées par la malnutrition. Des organisations non gouvernementales (ONG) et des programmes de santé publique encouragent la culture locale de spiruline comme solution durable et nutritive pour lutter contre la faim et les carences alimentaires.
-
-        La recherche continue également à explorer les propriétés médicinales de la spiruline, y compris ses effets antioxydants, anti-inflammatoires, et immunomodulateurs. Il existe un potentiel croissant pour la spiruline dans le domaine des cosmétiques, en raison de ses propriétés bénéfiques pour la peau.</p>
-   
-</section>
-<h3 class="titreProduit2">Conclusion</h3>
-<section class="text-block2">
-    <p>L'histoire de la spiruline est celle d'une ancienne cyanobactérie qui a traversé des milliards d'années pour devenir aujourd'hui un superaliment moderne aux multiples applications. De sa consommation par les anciennes civilisations aztèques et africaines à son adoption par les astronautes et les amateurs de santé moderne, la spiruline continue de captiver l'imagination et de nourrir le monde. Son potentiel pour répondre aux défis nutritionnels et de santé du futur reste immense, faisant de cette modeste algue bleue-verte un véritable trésor biologique.</p>
-   
-</section>
-</section>
-</main>
-    <footer>
-      <%- include('footer') %>
-    </footer>
-       <script src="./script.js"></script>
+    <!-- Section des boutons -->
+    <div class="right-side">
+      <div class="button-container">
+          <div class="button-group">
+              <a href="/spirulineBio" id="spirulineBio" class="btn"><button>Notre Spiruline Bio</button></a>
+              <a href="/histoiredelaspiruline" id="histoiredelaspiruline" class="btn"><button>Découvrez la Spiruline</button></a>
+              <button>Nos autres produits</button>
+              <button>Nous connaître</button>
+              <button>Nous rejoindre</button>
+              <a href="/contact" id="contact" class="btn"><button>Nous contacter</button></a>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+     <script src="/scriptsession.js"></script>
 </body>
 </html>

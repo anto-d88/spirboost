@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const Stripe = require('stripe');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 //const { Pool } = require('pg');
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
-
-const supabaseURL = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+ 
+const supabaseURL = "https://gvywdfacvjnnzrsatwdt.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2eXdkZmFjdmpubnpyc2F0d2R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk1MTA0MDcsImV4cCI6MjAzNTA4NjQwN30.zrOomQ_zeLLV-a6LlxsKYyGaJsocHW2UcK1uY-AbQFg";
+const stripe = new Stripe('sk_test_51PSRy2HYRUzu3tRFTSlSejDWnazbH5OEcFl2bGn2yl12Ufm9TJTKgolZWKKQU5nhuWsmRsgUMQ1m9rvdWDPT4LqA00tTNrvGLw');
 const supabase = createClient(supabaseURL, supabaseKey);
 
 //const pool = new Pool({ connectionString: process.env.SUPABASE_BD_URL});
@@ -28,7 +30,7 @@ router.get('/panier', async (req, res) => {
     .from('users')
     .select('*')
     .eq('id', iduser)
-    
+      
   if (erroruser) {
           return res.status(500).json({ error: error.message });
       }
@@ -38,7 +40,6 @@ router.get('/panier', async (req, res) => {
 
 router.post('/panier', async (req, res) => {
     const productId = req.query.id;
-    console.log(productId);
     const { quantity, price } = req.body;
 
     try {
@@ -105,70 +106,57 @@ router.post('/delete', async (req, res) => {
        })
 
 // Valider la commande
-router.post('/success', async (req, res) => {
 
-    try{
-    const userId = parseInt(req.query.userId);
-    
-    const { data: cartItems, error: cartItemserror } = await supabase
+
+router.post('/paiement', async (req, res) => {
+    const userId = req.query.userId;
+    const id = Number(userId);
+
+    try {  const { data: cartItems, error: errorcart } = await supabase
         .from('cart')
         .select('*')
-        .eq('user_id', userId);
-
-       
-
-    if (cartItemserror) {
-        return res.status(500).json({ cartItemserror });
+        .eq('user_id', id); 
+    if (errorcart) {
+        return res.status(500).send('Erreur lors de la récupération du panier');
     }
-    console.log(cartItems)
+    
 
-
-    const productid = cartItems[0].product_id
-
-    const { data: product, error: errorproduct } = await supabase
-    .from('products')
-    .select('*')
-    .eq('id', productid);
-
-    if (errorproduct) {
-        return res.status(500).json({ errorproduct });
+    if (!cartItems || cartItems.length === 0) {
+        return res.status(400).send('Le panier est vide.');
     }
-    console.log(product)
-    const { data: user, error: erroruser } = await supabase
-    .from('users')
-    .select('*')
-    .eq('id', userId);
-
-    if (erroruser) {
-        return res.status(500).json({ erroruser });
-    }
-    console.log(user)
-    if (cartItems.length > 0) {
+     
 
 
-        const { error: orderError } = await supabase
-            .from('orders')
-            .insert([{  client_id: cartItems[0].user_id, product: product[0].name,  quantity: cartItems[0].quantity, amount_euros: cartItems[0].total_price, order_status: "validée", email: user[0].email }]);
+    // (2) Transformer les données pour Stripe
+    const lineItems = cartItems.map(item => ({
+        price_data: {
+            currency: 'eur', // Changez la devise si nécessaire
+            product_data: {
+                name: "product", // Nom du produit
+            },
+            unit_amount: item.total_price * 100, // Prix en centimes
+        },
+        quantity: 1, // Quantité
+    })); 
+  // (3) Créer une session Stripe Checkout
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: lineItems,
+    mode: 'payment',
+    metadata: {
+        customer_id: id, // Transmettre l'ID client à Stripe
+    },
+    success_url: `http://localhost:3000/chargementPaiement?userId=${id}`,
+    cancel_url: `http://localhost:3000/panier?userId=${id}`,
+});
+ 
 
-        if (orderError) {
-            return res.status(500).json({ orderError });
-        }
-
-        // Vider le panier après la commande
-        await supabase
-            .from('cart')
-            .delete()
-            .eq('user_id', userId);
-
-       // res.render('order-confirmation', { title: 'Confirmation de commande' });
-        res.redirect(`/success?userId=${userId}`);
-    } else {
-        res.redirect(`/accueil?userId=${userId}`);
-    }
-} catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erreur lors des requêtes sur la base de données' });
+// (4) Rediriger l'utilisateur vers Stripe Checkout
+res.redirect(303, session.url);
+} 
+catch (err) {
+console.error('Erreur Stripe:', err);
+res.status(500).send('Erreur serveur : Impossible de créer une session Stripe.');
 }
 });
-
 module.exports = router;

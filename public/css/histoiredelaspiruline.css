@@ -1,0 +1,64 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 75%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 75%;
+}
+
+.slider {
+    display: flex;
+    transition: transform 1.5s ease-in-out;
+    width: 100%;
+    color: #f39c12;
+    height: 100%;
+    align-items: center;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 15% 5%  ;
+    background: rgba(0, 115, 230, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    height: 100%;
+    text-justify: distribute;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #fff;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1em;
+}
+
+/* Navigation dots */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: #ffdd57;
+}

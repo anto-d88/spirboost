@@ -5,67 +5,275 @@
 }
 body{
     font-family: "Poppins", sans-serif;
+    background-color: black;
 }
-main{
+/* Animation fade-in */
+.fade-in {
+    opacity: 0.2; /* Commence transparent */
+    animation: fadeInEffect 3s ease forwards; /* Animation de 1.5 secondes */
+  }
+  
+  /* Animation keyframes */
+  @keyframes fadeInEffect {
+    0% {
+      opacity: 0.2; /* Commence complètement transparent */
+      background-color: black; /* Fond noir au début */
+    }
+    100% {
+      opacity: 1; /* Terminé complètement opaque */
+      background-color: transparent; /* Transition vers le fond de la page */
+    }
+  }
+.fullscreen-image {
+    background-image: url('../img/R\ \(2\).jpg'); /* Chemin de l'image */
+    background-size: cover; /* Couvre toute la zone */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Ne répète pas l'image */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    width: 100vw; /* Prend toute la largeur de la fenêtre */
+
+  }
+  /* Superposition colorée */
+  .fullscreen-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   /* background-color: rgba(0, 123, 255, 0.5); /* Bleu semi-transparent */
+    background-color: rgba(5, 124, 72, 0.71); /* Bleu semi-transparent */
+    z-index: 1;
+
+  }
+  main{
+    position:absolute;
+    z-index: 2;
     width: 100%;
-    background-color: #fff;
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
     
+  }
+    /* Responsive : Empiler les sections en colonne sur mobile */
+    @media (max-width: 768px) {
+
+        .fullscreen-image {
+          background-image: url('../img/OIP\ \(10\).jpg'); /* Chemin de l'image */
+    
+          
+        }
+    
+      }
+
+    
+    h1 {
+        font-family: 'Lora', serif;
+        font-weight: 700;
+        font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+        color: #333;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+        margin: 0.5rem 0;
+    }
+    
+    /* Box containing the client information and orders */
+    .boxEspaceClient {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        width: 80%;
+        margin: 10%;
+        align-items: center;
+
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .box{
+      display: flex;
+    }
+    
+    /* Left-side navigation panel */
+    .nav {
+        background-color: #2c3e50;
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nav li {
+        margin-bottom: 15px;
+    }
+    
+    .navnom {
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+        font-weight: 600;
+        color: #ecf0f1;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .nav button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .nav button:hover {
+        background-color: #2980b9;
+    }
+    
+    /* Client information box */
+    .boxInfoClient{
+      
+        flex: 1;
+        padding: 20px;
+        background-color: #fdfdfd;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .boxCommandes {
+      display: none;
+        flex: 1;
+        padding: 20px;
+        background-color: #fdfdfd;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Information title */
+    .boxInfoClient h1 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #2c3e50;
+    }
+    
+    /* Orders table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    table thead {
+        background-color: #2c3e50;
+        color: #ffffff;
+        text-align: left;
+        font-weight: 600;
+    }
+    
+    table th, table td {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+    }
+    
+    table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    
+    table td {
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+    }
+    
+    table th {
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+    }
+    
+    table tbody tr td {
+        text-align: center;
+    }
+   /* Ajouter un conteneur de défilement pour le tableau */
+.boxCommandes {
+  overflow-x: auto; /* Permet le défilement horizontal si nécessaire */
 }
-.boxEspaceClient{
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
+
+/* Style de base pour le tableau */
+table {
+  width: 100%; /* Prend tout l'espace du conteneur */
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Style pour les écrans plus petits */
+@media (max-width: 1515px) {
+
+  .fullscreen-image {
+    background-image: url('../img/OIP\ \(10\).jpg'); /* Chemin de l'image */
+    background-size: auto; /* Conserve la taille naturelle */
+    background-repeat: repeat-y; /* Continue à répéter verticalement */
+    background-position: center top; /* Position initiale ajustée */
+ 
+  }
+
+  .box{
+    flex-direction: column;
     align-items: center;
-}
-.box{
-    
-    background-color: #fff;
-    height: 80%;
-    width: 80%;
-    position: absolute; 
-    display: flex;
-}
-.nav{
-    height: 100%;
-    width: 20%;
-    border-right: 2px #6d9e67 solid;
-}
-.nav ul{
-    list-style: none;
-}
-.nav ul button{
-    width: 100%;
-    
-}
-.navnom{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 2vw;
-    color: #6d9e67;
-    border-bottom: 2px #6d9e67 solid;
-}
-.boxInfoClient{
-    display: none;
-   font-family: "Roboto Condensed", sans-serif;
-    font-style: normal;
-    height: 100%;
-    font-size: 1.8vw;
-    font-weight: 600;
-    line-height: 1.6;
-    
-}
-.boxCommandes{
-    display: none;
-    font-family: "Roboto Condensed", sans-serif;
-    font-style: normal;
-    height: 100%;
-    font-size: 1.8vw;
-    font-weight: 600;
-    line-height: 1.6;
-    
-}
-.boxemilieu img{
-    margin-top: 20px;
-    width: 100%;
+  }
+  table, thead, tbody, th, td, tr {
+      display: block; /* On passe en mode bloc pour mieux gérer l'affichage */
+  }
+
+  /* En-tête du tableau */
+  thead {
+      display: none; /* On masque les en-têtes du tableau */
+  }
+
+  /* Chaque ligne devient une "carte" */
+  tbody tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Chaque cellule affiche un label pour l'en-tête */
+  td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+  }
+
+  td:last-child {
+      border-bottom: none;
+  }
+
+  td:before {
+      content: attr(data-label); /* Affiche le texte de l'attribut personnalisé */
+      font-weight: 600;
+      color: #2c3e50;
+      flex-basis: 50%; /* Largeur des labels */
+  }
+
+  td {
+      flex-basis: 50%; /* Largeur des valeurs */
+      text-align: right;
+  }
 }

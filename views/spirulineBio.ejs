@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Montserrat:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/spirulineBio.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./produit.css">
+
+    <title>SpirulineBio</title>
+  
+</head>
+<body>
+  <div class="fade-in">
+    <div class="fullscreen-image">
+      <main>
+      <%- include('header') %>
+      <section class="contenaire">
+        <section class="description">
+          <h1 class="titreProduit">SPIRULINE BIO: 180 Comprimés</h1>
+          <p>Découvrez notre paquet de 180 comprimés de spiruline, un super-aliment riche en nutriments essentiels pour votre santé quotidienne. La spiruline est une algue bleue-verte reconnue pour ses nombreux bienfaits, notamment sa capacité à renforcer le système immunitaire, améliorer l'énergie et soutenir la santé générale.</p>
+          <h2 class="titreProduit2">Bienfaits de la Spiruline</h2>
+          <ul class="benefits-list">
+              <li>Riche en protéines et en acides aminés essentiels</li>
+              <li>Renforce le système immunitaire</li>
+              <li>Améliore l'énergie et la vitalité</li>
+              <li>Soutient la santé cardiovasculaire</li>
+              <li>Détoxifie le corps des métaux lourds et des toxines</li>
+              <li>Aide à la gestion du poids</li>
+              <li>Riche en antioxydants pour combattre le stress oxydatif</li>
+          </ul>
+          <h2 class="titreProduit2">Mode d'emploi</h2>
+          <p>Prendre 4 à 6 comprimés par jour avec un grand verre d'eau, de préférence pendant les repas.</p>
+          <h2 class="titreProduit2">Ingrédients</h2>
+          <p>100% Spiruline biologique pure, sans additifs ni conservateurs.</p>
+          <h2 class="titreProduit2">Prix</h2>
+          <p><strong>Prix: 18€</strong></p>
+          <p class="status-message" id="status-<%= products[0].id %>"></p>
+          <section class="boxquantity">
+          <form class="add-to-cart-form" data-product-id="<%= products[0].id %>" data-product-price="<%= products[0].price %>" class="quantity-selector" >
+            <label for="quantity-<%= products[0].id %>">Quantité:</label>
+            <input type="number" id="quantity-<%= products[0].id %>" name="quantity" min="1" value="1" class="quantity">
+            <button class="quantity-btn decrease">-</button>
+          <button class="quantity-btn increase">+</button>
+            <button type="submit" class="add-to-cart">Ajouter au Panier</button>
+          </form>
+          <a href="/panier" id="panier2" class="btn">Aller dans le Panier</a>
+        
+      </section>
+        </section>
+        
+          <section class="image-slider">
+              <section class="slides">
+                <section class="boxeimg1">
+                <img src="./img/imgspirulinemodif.png" alt="Image 1" class="img1">
+              </section>
+               <section class="boxeimg2">
+                <img src="./img/R.jpg" alt="Image 2" class="img2">
+              </section>
+                <section class="boxeimg3">
+                  <img src="./img/OIP (5).jpg" alt="Image 3" class="img3">
+                </section>
+              </section>
+              <button class="prev" onclick="prevSlide()">&#10094;</button>
+              <button class="next" onclick="nextSlide()">&#10095;</button>
+          </section>
+        
+        
+      </section>
+    </main>
+    </div>
+  </div>
+  <script src="/scriptsession2.js"></script>
+</body>
+</html>

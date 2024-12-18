@@ -5,45 +5,55 @@
 }
 body{
     font-family: "Poppins", sans-serif;
+    background-color: black;
 }
-.boxforme{
-    width: 50%;
-    position: absolute;
-}
-.boxforme .pilulier{
-    width: 75%;
-    margin-left: 15%;
-    transform: rotate(-35deg);
+/* Animation fade-in */
+.fade-in {
+  opacity: 0.2; /* Commence transparent */
+  animation: fadeInEffect 3s ease forwards; /* Animation de 1.5 secondes */
 }
 
-
-.boxAccueil { 
-    width: 100%;
-    position: relative;
+/* Animation keyframes */
+@keyframes fadeInEffect {
+  0% {
+    opacity: 0.2; /* Commence complètement transparent */
+    background-color: rgb(0, 0, 0); /* Fond noir au début */
+  }
+  100% {
+    opacity: 1; /* Terminé complètement opaque */
+    background-color: transparent; /* Transition vers le fond de la page */
+  }
+}
+.logoAccueil{
+  width: 50%;
+}
+/* La classe pour l'image de fond */
+.fullscreen-image {
+    background-image: url('img/R\ \(2\).jpg'); /* Chemin de l'image */
+    background-size: cover; /* Couvre toute la zone */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Ne répète pas l'image */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    width: 100vw; /* Prend toute la largeur de la fenêtre */
     display: flex;
-    
     align-items: center;
+    justify-content: center;
+    color: white; /* Optionnel : couleur de texte blanche */
     
-}
-.boxAccueil img{
-    width: 100%;
-    height: auto;
-}
-
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divise l'écran en deux colonnes */
+    width: 90%; /* Augmente la largeur totale */
+    gap: 30px; /* Augmente l'espace entre les colonnes */
+  }
   
-main{
-    width: 100%;
-    background-color: #fff;
-    
-}
-
-.textepagedaccueil{
-    width: 50%;
-    position: absolute;
-    margin-left: 50%;
-    
-}
-.titre{
+  /* Style de la section gauche (titre) */
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -76,36 +86,88 @@ main{
         width: 50%;
       margin-left: 0;
     }
+  }
+  .contener-texteAccueil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2vw; /* Agrandit le titre */
+    height: 100%;
+    width: 100%;
+    background-color: rgba(198, 163, 106, 0.4);
+  }
   
-    .textepagedaccueil{
-        width: 100%;
-        position: relative;
-        margin-left: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        
+  /* Style de la section droite (boutons) */
+  .right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Agrandir le conteneur d'arrière-plan des boutons */
+  .button-container {
+    background-color: rgba(198, 163, 106, 0.4); /* Arrière-plan légèrement plus opaque */
+    padding: 20px; /* Ajoute plus de padding pour un bloc plus grand */
+    /*border-radius: 15px; /* Coins arrondis plus visibles */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Ombre plus intense */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%; /* Prend toute la largeur disponible */
+  }
+  
+  /* Agrandir la taille des boutons */
+  .button-group {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Augmente l'espace entre les boutons */
+  }
+  
+  .button-group button {
+    width: 100%;
+    padding: 5% ; /* Plus de padding pour des boutons plus grands */
+    font-size: 1.2vw; /* Taille de police plus grande */
+    border: none;
+    /*border-radius: 10px; /* Coins des boutons arrondis */
+    cursor: pointer;
+    background-color: #6d9e67; /* Couleur de fond des boutons */
+    color: white; /* Couleur du texte */
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+  }
+  
+  /* Responsive : Empiler les sections en colonne sur mobile */
+  @media (max-width: 768px) {
+    .logoAccueil{
+      width: 75%;
     }
-    .titre{
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 1.5rem;
-        color: #555; /* Vert apaisant pour le bien-être */
-        margin-bottom: 20px;
+    .content {
+      grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+      text-align: center;
     }
-    .text-block{
-        text-align: center;
-        width: 100%;
-        font-size: 1rem;
-        font-weight: 600;
-        line-height: 1.6;
-        color: #555;
-        padding: 0 10% 0 10%;
-        
+    .fullscreen-image {
+      background-image: url('img/OIP\ \(10\).jpg'); /* Chemin de l'image */
+
+      
     }
+    
+    .left-side, .right-side {
+      justify-content: center;
+    }
+    .contener-texteAccueil{
+      padding: 5%;
+      width: 70%;
+    }
+    .button-group button {
+    
+      padding: 5% ; /* Plus de padding pour des boutons plus grands */
+      font-size: 3vw; /* Taille de police plus grande */
 
-}
-
-
-
+    }
+  }

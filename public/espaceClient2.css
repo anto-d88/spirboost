@@ -1,0 +1,145 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Box containing the client information and orders */
+.boxEspaceClient {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Left-side navigation panel */
+.nav {
+    background-color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin-bottom: 15px;
+}
+
+.navnom {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ecf0f1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav button:hover {
+    background-color: #2980b9;
+}
+
+/* Client information box */
+.boxInfoClient, .boxCommandes {
+    flex: 1;
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Information title */
+.boxInfoClient h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+/* Orders table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #2c3e50;
+    color: #ffffff;
+    text-align: left;
+    font-weight: 600;
+}
+
+table th, table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    font-size: 0.9rem;
+}
+
+table th {
+    font-size: 1rem;
+}
+
+table tbody tr td {
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .boxEspaceClient {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav {
+        width: 100%;
+    }
+}

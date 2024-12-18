@@ -1,48 +1,37 @@
 header{
   display: flex;
-    background-color: #fff;
+
     color: #0d4009;
     width: 100%;
     padding: 1% 0;
+    z-index: 1001; /* Assurez-vous que le logo est devant la navbar */
 }
 .header{
+  background-color: rgba(5, 124, 72, 1); /* Même couleur que le header */
+  position: fixed; /* Toujours visible en haut */
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0 auto;
     padding: 0 2%;
+    z-index: 1003;
+    top: 0;
     
+}
+.logo{
+  width: 25%;
+  z-index: 1002; /* Assurez-vous que le logo est devant la navbar */
+  position: relative;
 }
 .logoutilisateur{
   margin-right: 10px;
   width: 4%;
   
 }
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1); /* Léger effet d'ombre */
-}
-
-/* Style pour diviser les lettres en deux couleurs */
-.logo span {
-  display: inline-block;
-}
-
-/* Première moitié en orange */
-.logo span:nth-child(-n+4) {
-  color: #f39c12; /* Orange */
-}
-
-/* Deuxième moitié en vert spiruline */
-.logo span:nth-child(n+5) {
-  color: #6d9e67; /* Vert spiruline */
-}
 .nomutilisateur {
-  color: #6d9e67;
+  font-size: 1.4vw;
+  color: #f39c12;
   }
 /* Cacher le bouton checkbox */
 #menu-toggle {
@@ -78,17 +67,16 @@ header{
   /* Menu caché par défaut */
   .nav-menu {
     position: fixed;
-    top: 80px;
     left: -50%; /* Cache le menu hors écran */
     width: 50%;
     height: 100vh;
-    background-color: #fff;
+    background-color: rgba(5, 124, 72, 1); /* Bleu semi-transparent */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: 0.3s ease;
-    z-index: 1;
+    z-index: 1000; /* Assurez-vous que la navbar est derrière le logo */
   }
   
   .nav-menu ul {
@@ -113,6 +101,7 @@ header{
   .nav-buttons .btn:hover{
     color: #e67e22;
 }
+
   
   /* Quand le checkbox est coché, afficher le menu */
   #menu-toggle:checked ~ .nav-menu {
@@ -134,11 +123,16 @@ header{
   
   /* Responsiveness : sur grands écrans, cacher le menu burger */
   @media (min-width: 1015px) {
-    
+    header {
+      position: static; /* Le header ne suit pas le scroll sur grand écran */
+      background-color: transparent; /* Transparent sur desktop */
+  }
     .burger-icon {
       display: none;
     }
-  
+    .nav-buttons{
+      font-size: 1vw;
+    }
     .nav-menu {
       position: static;
       display: flex;
@@ -148,7 +142,7 @@ header{
       right: 0;
       width: auto;
     }
-  
+   
     .nav-menu ul {
         list-style: none;
         display: flex;
@@ -160,25 +154,22 @@ header{
   
     
   }
-  @media(max-width: 600px){
-    .header{
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      justify-content: space-between;
-      align-items: normal;
-    }
+  @media(max-width: 1000px){
+   
    
     .burger-icon{
       margin-right: 10px;
     }
     .nav-menu{
-      top: 40px;
+      justify-content:start;
+      
     }
-    .logo {
-      font-size: 1rem;
-    }
+   
     .nomutilisateur{
       font-size: 50%;
+    }
+    .nav-buttons{
+      font-size: 5vw;
     }
    
 

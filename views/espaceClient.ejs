@@ -17,10 +17,11 @@
   
 </head>
 <body>
-    <%- include('header') %>
+  <div class="fade-in">
+    <div class="fullscreen-image">
       <main>
+        <%- include('header') %>
       <section class="boxEspaceClient">
-        <img src="./img/imgillustrator.svg" alt="image maquette ! ">
         <section class="box">
           <nav class="nav">
             <ul>
@@ -39,29 +40,35 @@
       </section>
       <section class="boxCommandes">
 <p>mes commandes</p>
+<table border="1">
+  <thead>
+      <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Date de la commande</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% ordersItems.forEach(item => { %>
+    <tr>
+      <td data-label="Produit"><%= item.product %></td>
+      <td data-label="Quantité"><%= item.quantity %></td>
+      <td data-label="Prix"><%= item.amount_euros %></td>
+      <td data-label="Date de la commande"><%= item.order_date %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
       </section>
     </section>
 </section>
-<section class="boxemilieu">
-  <img src="./img/montage01.png" alt="image maquette ! ">
-</section>
+
 </main>
+    </div></div>
     <footer>
-      <%- include('footer') %>
     </footer>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-    const hidenid = document.getElementById('hidenid').innerHTML;
-    const userId = hidenid ;
-    document.getElementById("hidenid").style.display = "none"
-    const userLinkaccueil = document.getElementById('accueil');
-    userLinkaccueil.href = `/accueil?userId=${encodeURIComponent(userId)}`;
-    const userLinkpanier = document.getElementById('panier');
-    userLinkpanier.href = `/panier?userId=${encodeURIComponent(userId)}`;
-    const userLinkEspaceClient = document.getElementById('espaceClient');
-  userLinkEspaceClient.href = `/espaceClient?userId=${encodeURIComponent(userId)}`;
-  });
-  </script>
+    <script src="/scriptsession4.js"></script>
   <script src="./scripespaceclient.js"></script>
 </body>
 </html>

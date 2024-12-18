@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+}
+
+/* Animation fade-in */
+.fade-in {
+  opacity: 0.2; /* Commence transparent */
+  animation: fadeInEffect 3s ease forwards; /* Animation de 3 secondes */
+}
+
+/* Animation keyframes */
+@keyframes fadeInEffect {
+  0% {
+      opacity: 0.2; /* Commence complètement transparent */
+      background-color: black; /* Fond noir au début */
+  }
+  100% {
+      opacity: 1; /* Terminé complètement opaque */
+      background-color: transparent; /* Transition vers le fond de la page */
+  }
+}
+
+.fullscreen-image {
+  background-image: url('../img/R\ \(2\).jpg'); /* Chemin de l'image par défaut */
+  background-size: cover; /* Couvre toute la zone */
+  background-position: center; /* Centre l'image */
+  background-repeat: no-repeat; /* Ne répète pas l'image */
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  width: 100vw; /* Prend toute la largeur de la fenêtre */
+  position: relative;
+}
+
+/* Superposition colorée */
+.fullscreen-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(5, 124, 72, 0.71); /* Couleur d'overlay semi-transparente */
+  z-index: 1;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 100vh; /* S'assurer que la hauteur minimale soit la taille de l'écran */
+}
+
+/* Responsive : Empiler les sections en colonne sur mobile */
+@media (max-width: 768px) {
+
+  .fullscreen-image {
+    
+      background-image: url('../img/OIP\ \(10\).jpg'); /* Image spécifique pour mobile */
+      background-size: auto; /* Garder la taille d'origine de l'image */
+      background-repeat: repeat-y; /* Répéter l'image verticalement */
+      background-position: top left; /* L'image commence depuis le coin supérieur gauche */
+      min-height: 100vh; /* S'assurer que la hauteur minimale soit la taille de l'écran */
+      height: auto; /* Permettre la hauteur automatique */
+  }
+
+  /* Pour s'assurer que le conteneur parent prend toute la hauteur de la fenêtre */
+  .fullscreen-image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(5, 124, 72, 0.71); /* Couleur d'overlay semi-transparente */
+      z-index: 1;
+  }
+
+  /* Assurez-vous que le contenu principal est visible par-dessus l'image */
+  main {
+      position: relative;
+      z-index: 2;
+  }
+}

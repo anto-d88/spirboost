@@ -1,28 +1,18 @@
 
 <header>
+
     <% if (user) { %> 
             <p id="hidenid"><%= user.id %></p>
             <% } %>
     <section class="header">
-       <section class="logo-utilisateur">
-        <section class="logo">
-            <h1 class="logo">
-                <span>S</span>
-                <span>P</span>
-                <span>I</span>
-                <span>R</span>
-                <span>B</span>
-                <span>O</span>
-                <span>O</span>
-                <span>S</span>
-                <span>T</span>
-              </h1>
-        </section>
+       
+              <img src="./img/logo_Spirboost.png" alt="Image 1" class="logo">
+    
         <section class="boxtextheader"><% if (user) { %>
           <h3 class="nomutilisateur">Bienvenue, <%= user.first_name %> <%= user.last_name %>! </h3>
       <% } %>
          </section>
-        </section> 
+       
         
          <!-- Bouton burger -->
 <div class="burger-menu">
@@ -37,8 +27,10 @@
         <nav class="nav-menu">
    <ul class="nav-buttons">
     <li><a href="/accueil" id="accueil" class="btn">Accueil</a></li>
+    <li><a href="/spirulineBio" id="spirulineBio" class="btn">Spiruline</a></li>
+    <li><a href="/histoiredelaspiruline" id="histoiredelaspiruline" class="btn">Découverte</a></li>
 
-    <li><a href="#" class="btn">Contact</a></li>
+    <li><a href="/contact" id="contact" class="btn">Contact</a></li>
     <% if (!user) { %>
       <li><a href="/register" class="btn">Nous rejoindre</a></li>
       <li><a href="/login" class="btn">Connection</a> </li>
@@ -51,9 +43,6 @@
     </nav>
 </div>
 </section>
-<% if (!user){ %>
-<img src="./img/logoutilisateur.svg" alt="Image" class="logoutilisateur">
-<% } else { %>
-    <img src="./img/logoutilisateur2.svg" alt="Image" class="logoutilisateur">
-    <% } %>
+
+ 
   </header>

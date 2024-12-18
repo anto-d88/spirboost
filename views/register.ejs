@@ -9,37 +9,35 @@
 <body>
     <section class="boxe-login">
     <h1>Inscription</h1>
-   <form action="/register"  method="POST">
+    <form action="/register" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <div>
-            <label htmlFor="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required />
         </div>
         <div>
-            <label htmlFor="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required />
         </div>
         <div>
-            <label htmlFor="adresse">Adresse:</label>
-            <input type="text" id="adresse" name="adresse" required>
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse" required />
         </div>
         <div>
-            <label htmlFor="telephone">Téléphone:</label>
-            <input type="number" id="telephone" name="telephone" required>
-        </div>
-        
-        <div>
-            <label htmlFor="Nom">Nom:</label>
-            <input type="text" id="Nom" name="Nom" required>
+            <label for="telephone">Téléphone:</label>
+            <input type="number" id="telephone" name="telephone" required />
         </div>
         <div>
-            <label htmlFor="Prenom">Prenom:</label>
-            <input type="text" id="Prenom" name="Prenom" required>
+            <label for="Nom">Nom:</label>
+            <input type="text" id="Nom" name="Nom" required />
+        </div>
+        <div>
+            <label for="Prenom">Prénom:</label>
+            <input type="text" id="Prenom" name="Prenom" required />
         </div>
         <button type="submit">S'inscrire</button>
     </form> 
-    <a href="/login" class="btn">Connection</a>
+    <a href="/login" class="btn">Connexion</a>
     </section>
-    
-
 </body>
 </html>

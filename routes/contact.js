@@ -22,20 +22,17 @@ const authenticate = (req, res, next) => {
 };                   
                   
    
-router.get('/', async (req, res) => {
-  const user = 0;
 
-  res.render('accueil', { user: user }); 
-      });
 
-router.get('/accueil', async (req, res) => {
+router.get('/contact', async (req, res) => {
   if(!req.query.userId){
     const user = 0;
-    res.render('accueil', { user: user }); 
+    res.render('contact', { user: user }); 
   }else{
+
   const userId = req.query.userId; 
   const id = Number(userId);
-
+console.log(userId)
   let { data: users, error } = await supabase
   .from('users')
   .select('*')
@@ -53,7 +50,7 @@ if (error) {
 if (error2) throw error2;
 console.log(products)
   
-    res.render('accueil', { user: users[0], products: products }); 
+    res.render('contact', { user: users[0], products: products }); 
   }
       });
   
